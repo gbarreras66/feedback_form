@@ -6,7 +6,8 @@ const FeedbackForm = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        feedback: ''
+        feedback: '',
+        rating: ''
     });
 
     const handleChange = (event) => {
@@ -23,15 +24,17 @@ const FeedbackForm = () => {
         `Name: ${formData.name}
         Email: ${formData.email}
         Feedback: ${formData.feedback}
+        Rating: ${formData.rating}
         `;  
-
+        
     const isConfirmed = window.confirm(`Please confirm your details:\n\n${confirmationMessage}`);
     if (isConfirmed) {
         console.log('Submitting feedback:',formData);
         setFormData({
             name:'',
             email:'',
-            feedback:''
+            feedback:'',
+            rating:''
         });
         alert('Thank you for your valuable feedback!');
     }
@@ -45,22 +48,73 @@ const FeedbackForm = () => {
         <h2>We'd Love to Hear From You!</h2>
         <p>Please share your feedback with us.</p>
         <input 
-            type="email" 
-            name="email" 
-            placeholder="Your Email"
+           type="text"
+           name="name"
+           placeholder="Your Name"
+           onChange={handleChange}
         />
         <input
           type="email"
           name="email"
           placeholder="Your Email"
+          onChange={handleChange}
         />
         <textarea
           name="feedback"
           placeholder="Your Feedback"
+          onChange={handleChange}
         ></textarea>
+        <h3>Rate us</h3>
+        <div style={{display:'flex',gap:'10px',flexDirection:'column'}}>
+        <div style={{display:'flex',gap:'10px',flexDirection:'row'}}>
+        <input
+            type="radio" 
+            name="rating"
+            value="1"
+            onChange= {handleChange}
+        />1
+        
+        </div>
+        <div style={{display:'flex',gap:'10px',flexDirection:'row'}}>
+        <input
+            type="radio" 
+            name="rating"
+            value="2"
+            onChange= {handleChange}
+        />2
+        
+        </div>
+        <div style={{display:'flex',gap:'10px',flexDirection:'row'}}>
+        <input
+            type="radio" 
+            name="rating"
+            value="3"
+            onChange= {handleChange}
+        />3
+        
+        </div>
+        <div style={{display:'flex',gap:'10px',flexDirection:'row'}}>
+        <input
+            type="radio" 
+            name="rating"
+            value="4"
+            onChange= {handleChange}
+        />4
+        
+        </div>
+        <div style={{display:'flex',gap:'10px',flexDirection:'row'}}>
+        <input
+            type="radio" 
+            name="rating"
+            value="5"
+            onChange= {handleChange}
+        />5
+        
+        </div>
+        </div>
         <button type="submit">Submit Feedback</button>
       </form>
     </>
   );
-};
+}
 export default FeedbackForm;
